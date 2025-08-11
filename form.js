@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
       <button type="submit">Submit</button>
     </form>
   `);
-
+ 
   res.write("</body></html>");
   console.log(req.methods,req.url)
   res.end();
