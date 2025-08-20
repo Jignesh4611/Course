@@ -1,0 +1,17 @@
+const path = require('path'); 
+const express = require('express'); 
+const rootDir  = require('./utils/pathUtil')
+const homeRouter  = require('./routes/homeRouter')
+const contactRouter = require('./routes/contactRouter')
+const app = express(); 
+app.use(express.urlencoded())
+app.use(homeRouter);
+app.use(contactRouter);
+
+app.use('/',(req,res,next)=> { 
+     res.sendFile(path.join(rootDir,'views' ,'404.html'));
+})
+const port = 3008;
+app.listen(port , ()=>{
+  console.log(`server start at http://localhost:${port}`)
+})
