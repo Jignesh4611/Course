@@ -3,20 +3,8 @@ const path = require('path');
 const express = require("express"); 
 const hostRouter = express.Router(); 
 const rootDir = require('../utils/pathUtil')
+const  HomesCotroller= require("..//")
 
-hostRouter.get("/add-home", (req, res, next) => {
-  res.render('addhome', { 
-    pageTitle: 'Registration',
-    headerTitle: 'Add your detail'
-  });
-});
-const registeredHomes = [];
-hostRouter.post("/add-home", (req, res, next) => {
-  console.log('Home Registration successful for : ' ,req.body, req.body.houseName);
-  registeredHomes.push({houseName : req.body.houseName}) ;
-  console.log(req.body.houseName );
-    res.sendFile(path.join(rootDir,'views', 'homeadded.html'))
-
-});
+hostRouter.get("/add-home",HomesCotroller.getAddHome);
+hostRouter.post("/add-home",HomesCotroller.postAddHomes);
 exports.hostRouter= hostRouter ; 
-exports.registeredHomes = registeredHomes ; 

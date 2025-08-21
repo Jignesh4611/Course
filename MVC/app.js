@@ -7,7 +7,6 @@ app.set('views','views')
 app.use(express.static(path.join(__dirname, 'public')));
 
 const userRouter = require("./routes/userRouter")
-const bodyParser= require("body-parser");
 const {hostRouter} = require("./routes/hostRouter");
 const rootDir = require('./utils/pathUtil')
 app.use(express.urlencoded())
